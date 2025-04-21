@@ -9,9 +9,11 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapasity;
+    private String email;
+    private int mailboxCapasity = 500;
     private String alternateEmail;
     private int defaultPassLength = 8;
+    private String companyDomain = "comp.rs";
 
 
 
@@ -28,7 +30,8 @@ public class Email {
         this.password = randPassword(defaultPassLength);
         System.out.println("your password id: " + this.password);
 
-
+        email = this.firstName.toLowerCase() + "." + this.lastName.toLowerCase() +"@" + this.department + "." + this.companyDomain;
+        System.out.println(email);
     }
 
     private String setDepartment(){
@@ -52,10 +55,38 @@ public class Email {
             password[i] = passwordString.charAt(rand);
         }
         return new String(password);
-
     }
 
-    void prtName(){
-        System.out.println(this.firstName + "  " +this.lastName);
+    public void setMailCampacity(int capacity) {
+        this.mailboxCapasity = capacity;
+    }
+
+    public void setAlternateEmail(String alternateEmail) {
+        this.alternateEmail = alternateEmail;
+    }
+
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
+    public int getMailboxCapasity() {
+        return  mailboxCapasity;
+    }
+
+    public String getAlternateEmail() {
+        return alternateEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+
+    public String showInfo() {
+        return "DISPLAY NAME: " + this.firstName + " " + this.lastName +
+                "COMPANY NAME: " + this.email +
+                "MAILBOX CAPACITY: " + mailboxCapasity +
+                "PASSWORD: " + this.password;
+
     }
 }
